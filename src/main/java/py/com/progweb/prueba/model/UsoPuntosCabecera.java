@@ -54,7 +54,7 @@ public class UsoPuntosCabecera {
     @Basic(optional = false)
     private Date fecha;
 
-    @Column(name = "concepto")
+    @Column(name = "id_concepto")
     @Basic(optional = false)
     private Integer concepto;
 
