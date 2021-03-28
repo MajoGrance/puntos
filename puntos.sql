@@ -32,7 +32,8 @@ CREATE TABLE public.bolsa_puntos
 	puntos_asignados INTEGER NOT NULL,
 	puntos_utilizados INTEGER NOT NULL,
 	puntos_saldo INTEGER NOT NULL,
-	monto_operacion DOUBLE PRECISION NOT NULL
+	monto_operacion DOUBLE PRECISION NOT NULL,
+	estado VARCHAR(50) NOT NULL
 ) WITHOUT OIDS;
 
 /* Add Primary Key */
