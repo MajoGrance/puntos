@@ -17,7 +17,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "ReglaAsignacionPuntos.all", query = "SELECT rap FROM ReglaAsignacionPuntos rap")
     ,
     @NamedQuery(name = "ReglaAsignacionPuntos.cantidadPuntos",
-            query = "SELECT rap FROM ReglaAsignacionPuntos rap where :monto >= rap.limiteInferior and :monto <= rap.limiteSuperior")})
+            query = "SELECT rap FROM ReglaAsignacionPuntos rap where (:monto >= rap.limiteInferior and :monto <= rap.limiteSuperior)"
+            		+ " or (rap.limiteInferior = 0 and rap.limiteSuperior = 0)")})
 public class ReglaAsignacionPuntos {
 
     public ReglaAsignacionPuntos() {

@@ -122,6 +122,7 @@ public class BolsaPuntosDAO {
         bolsa.setFechaAsignacion(actual);
         bolsa.setFechaCaducidad(calendar.getTime());
         bolsa.setMontoOperacion(BigDecimal.ZERO);
+        bolsa.setEstado("ACTIVO");
 		this.em.persist(bolsa);
     }
 
