@@ -136,7 +136,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"descripcion\": \"Vale de premio\",\n    \"puntosRequeridos\": 50\n}",
+							"raw": "{\n    \"descripcion\": \"Vale de descuento 10%\",\n    \"puntosRequeridos\": 50\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -187,7 +187,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"descripcion\": \"Vale de descuento\",\n    \"puntosRequeridos\": 50\n}",
+							"raw": "{\n    \"id\": 2,\n    \"descripcion\": \"Vale de descuento 20%\",\n    \"puntosRequeridos\": 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -250,7 +250,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"limiteInferior\": 0,\n    \"limiteSuperior\": 100000,\n    \"montoEquivalencia\": 50000\n}",
+							"raw": "{\n    \"limiteInferior\": 0,\n    \"limiteSuperior\": 9999999,\n    \"montoEquivalencia\": 50000\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -301,7 +301,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"limiteInferior\": 0,\n    \"limiteSuperior\": 100000,\n    \"montoEquivalencia\": 30000\n}",
+							"raw": "{\n    \"id\": 2,\n    \"limiteInferior\": 0,\n    \"limiteSuperior\": 0,\n    \"montoEquivalencia\": 3000\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -540,7 +540,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/puntos/bolsas/?id=3",
+							"raw": "http://localhost:8080/puntos/bolsas/?id=20",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -554,7 +554,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "20"
 								}
 							]
 						},
@@ -658,7 +658,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/puntos/usos/cabeceras?id=1",
+							"raw": "http://localhost:8080/puntos/usos/cabeceras?id=3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -672,7 +672,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						},
@@ -770,7 +770,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/puntos/usos/detalles?id=1",
+							"raw": "http://localhost:8080/puntos/usos/detalles?id=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -784,7 +784,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						},
@@ -1098,7 +1098,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/puntos/bolsas/cargar/2?monto=50000",
+							"raw": "http://localhost:8080/puntos/bolsas/cargar/2?monto=100000",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1113,7 +1113,7 @@
 							"query": [
 								{
 									"key": "monto",
-									"value": "50000"
+									"value": "100000"
 								}
 							]
 						},
@@ -1126,6 +1126,10 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8080/puntos/usos/cabeceras/cargar/2?idConcepto=2",
 							"protocol": "http",
@@ -1157,7 +1161,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/puntos/reglas-asignaciones/get-puntos/100000",
+							"raw": "http://localhost:8080/puntos/reglas-asignaciones/get-puntos/300000",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1167,7 +1171,7 @@
 								"puntos",
 								"reglas-asignaciones",
 								"get-puntos",
-								"100000"
+								"300000"
 							]
 						},
 						"description": "Es un servicio informativo que devuelve la cantidad de puntos equivalente al monto proporcionado como parámetro"
