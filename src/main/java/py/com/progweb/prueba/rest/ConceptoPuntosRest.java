@@ -15,21 +15,20 @@ import py.com.progweb.prueba.ejb.ConceptoPuntosDAO;
 import py.com.progweb.prueba.model.ConceptoPuntos;
 
 @Path("conceptos")
-@Consumes("application/json")
-@Produces("application/json")
 public class ConceptoPuntosRest {
 
     @Inject
     private ConceptoPuntosDAO ConceptoPuntosBean;
 
     @GET
-    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response listar() {
         return Response.ok(ConceptoPuntosBean.listar()).build();
     }
 
     @POST
-    @Path("/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response agregar(ConceptoPuntos entity) {
         this.ConceptoPuntosBean.agregar(entity);
         return Response.ok().build();

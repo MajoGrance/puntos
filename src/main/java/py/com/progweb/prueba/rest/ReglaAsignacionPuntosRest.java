@@ -22,7 +22,6 @@ public class ReglaAsignacionPuntosRest {
     private ReglaAsignacionPuntosDAO reglaAsignacionPuntosBean;
 
     @GET
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response listar() {
         return Response.ok(reglaAsignacionPuntosBean.listar()).build();

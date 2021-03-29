@@ -16,21 +16,20 @@ import py.com.progweb.prueba.ejb.UsoPuntosDetallesDAO;
 import py.com.progweb.prueba.model.UsoPuntosDetalle;
 
 @Path("usos/detalles")
-@Consumes("application/json")
-@Produces("application/json")
 public class UsoPuntosDetallesRest {
 
     @Inject
     private UsoPuntosDetallesDAO usoPuntosDetallesBean;
 
     @GET
-    @Path("/")
+    @Produces("application/json")
     public Response listar() {
         return Response.ok(usoPuntosDetallesBean.listar()).build();
     }
 
     @POST
-    @Path("/")
+    @Consumes("application/json")
+    @Produces("application/json")
     public Response agregar(UsoPuntosDetalle entity) {
         this.usoPuntosDetallesBean.agregar(entity);
         return Response.ok().build();

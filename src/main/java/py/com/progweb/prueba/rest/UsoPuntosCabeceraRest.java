@@ -1,6 +1,7 @@
 package py.com.progweb.prueba.rest;
 
 import java.text.ParseException;
+import javax.ws.rs.PathParam;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -18,8 +19,6 @@ import py.com.progweb.prueba.ejb.UsoPuntosCabeceraDAO;
 import py.com.progweb.prueba.model.UsoPuntosCabecera;
 
 @Path("usos/cabeceras")
-@Consumes("application/json")
-@Produces("application/json")
 public class UsoPuntosCabeceraRest {
 
     private static final Logger LOGGER = LogManager.getLogger(UsoPuntosCabeceraRest.class);
@@ -27,13 +26,14 @@ public class UsoPuntosCabeceraRest {
     private UsoPuntosCabeceraDAO usoPuntosCabeceraBean;
 
     @GET
-    @Path("/")
+    @Produces("application/json")
     public Response listar() {
         return Response.ok(usoPuntosCabeceraBean.listar()).build();
     }
 
     @POST
-    @Path("/")
+    @Consumes("application/json")
+    @Produces("application/json")
     public Response agregar(UsoPuntosCabecera entity) {
         this.usoPuntosCabeceraBean.agregar(entity);
         return Response.ok().build();
@@ -85,10 +85,9 @@ public class UsoPuntosCabeceraRest {
     }
     
     @POST
-    @Path("/cargar")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/cargar/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response utilizarPuntos(@QueryParam("idCliente") Integer idCliente, @QueryParam("idConcepto") Integer idConcepto){
+    public Response utilizarPuntos(@PathParam("id") Integer idCliente, @QueryParam("idConcepto") Integer idConcepto){
         return Response.ok(this.usoPuntosCabeceraBean.utilizarPuntos(idCliente, idConcepto)).build();
     }
 }

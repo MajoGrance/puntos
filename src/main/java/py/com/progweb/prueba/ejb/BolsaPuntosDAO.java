@@ -97,17 +97,14 @@ public class BolsaPuntosDAO {
         return todos;
     }
 
-    public void cargarPuntos(Integer idCliente, Double monto) {
-        Cliente cliente = new Cliente();
+	public void cargarPuntos(Integer idCliente, Double monto) {
+    	Cliente cliente = new Cliente();
         cliente.setId(idCliente);
-        
-        Map<?, ?> mapPuntos = reglaBean.getCantidadDePuntos(monto);
-        if (mapPuntos.get("estado").equals("-1")){
+        Map<String, Object> mapPuntos = reglaBean.getCantidadDePuntos(monto);
+        if (mapPuntos.get("estado").equals(-1)){
             return;
-        } 
-        
+        }
         Integer puntos = (Integer) mapPuntos.get("puntos");
-
         BolsaPuntos bolsa = new BolsaPuntos();
         bolsa.setCliente(cliente);
         bolsa.setPuntosAsignados(puntos);
@@ -116,7 +113,6 @@ public class BolsaPuntosDAO {
 
         // Se tiene que obtener cuando caducen los puntos de la tabla de vencimientos
         Integer diasDuracion = vencimientoBean.getDiasCaducidad();
-        LOGGER.info("LOS DIAS DE DURACION DE LOS PUNTOS SON: [{}]", diasDuracion);
 
         Calendar calendar = Calendar.getInstance();
         Date actual = new Date();
@@ -126,8 +122,7 @@ public class BolsaPuntosDAO {
         bolsa.setFechaAsignacion(actual);
         bolsa.setFechaCaducidad(calendar.getTime());
         bolsa.setMontoOperacion(BigDecimal.ZERO);
-
-        this.em.persist(bolsa);
+		this.em.persist(bolsa);
     }
 
     @SuppressWarnings("unchecked")

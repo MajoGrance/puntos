@@ -16,21 +16,20 @@ import py.com.progweb.prueba.ejb.VencimientoPuntosDAO;
 import py.com.progweb.prueba.model.VencimientoPuntos;
 
 @Path("vencimientos")
-@Consumes("application/json")
-@Produces("application/json")
 public class VencimientoPuntosREST {
 
     @Inject
     private VencimientoPuntosDAO vencimientoPuntosBean;
 
     @GET
-    @Path("/")
+    @Produces("application/json")
     public Response listar() {
         return Response.ok(vencimientoPuntosBean.listar()).build();
     }
 
     @POST
-    @Path("/")
+    @Consumes("application/json")
+    @Produces("application/json")
     public Response agregar(VencimientoPuntos entity) {
         this.vencimientoPuntosBean.agregar(entity);
         return Response.ok().build();

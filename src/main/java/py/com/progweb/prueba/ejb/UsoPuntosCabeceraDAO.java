@@ -65,8 +65,8 @@ public class UsoPuntosCabeceraDAO {
     @SuppressWarnings("unchecked")
 	public Object listarByFecha(String fechaInicio, String fechaFin) throws ParseException {
         Query q = this.em.createNamedQuery("UsoPuntosCabecera.byFecha");
-        Date fechaInicioDate = new SimpleDateFormat("dd/MM/yyy").parse(fechaInicio);
-        Date fechaFinDate = new SimpleDateFormat("dd/MM/yyy").parse(fechaFin);
+        Date fechaInicioDate = new SimpleDateFormat("yyyy-MM-dd").parse(fechaInicio);
+        Date fechaFinDate = new SimpleDateFormat("yyyy-MM-dd").parse(fechaFin);
         
         return (List<UsoPuntosCabecera>) 
                 q.setParameter("fechaInicio", fechaInicioDate)

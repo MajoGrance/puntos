@@ -33,9 +33,15 @@ public class VencimientoPuntosDAO {
         this.em.merge(venc);
     }
     
-    public Integer getDiasCaducidad() {
+    @SuppressWarnings("unchecked")
+	public Integer getDiasCaducidad() {
         Query q = this.em.createNamedQuery("VencimientoPuntos.duracionByRango");
         Date actual = new Date();
-        return (Integer) q.setParameter("fechaAsignacion", actual).getSingleResult();
+        List<Integer> lista = (List<Integer>) q.setParameter("fechaAsignacion", actual).getResultList();
+        if (lista.isEmpty())
+        	return 0;
+        else {
+        	return lista.get(0);
+        }
     }
 }

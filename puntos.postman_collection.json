@@ -1,0 +1,1227 @@
+{
+	"info": {
+		"_postman_id": "4c5d858d-78a0-47dd-a957-1711ab7519be",
+		"name": "puntos",
+		"description": "# Introducción\nSe requiere la implementación de un sistema de fidelización de clientes que pueda hacer seguimiento de los puntos otorgados por operaciones de pago.\n\n# Formato de fechas\nEl formato esperado para los campos de tipo fecha es yyyy-mm-dd",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cliente",
+			"item": [
+				{
+					"name": "crear cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFhcmV2YWxvcyIsImlhdCI6MTYxMjM1Nzg0NCwiZXhwIjoxNjQ4MzU3ODQ0fQ.lD5wcWqpA4gQJFYkOzZOVn1YcnhYmJtg1-_jAwIq2zw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Maria\",\n    \"apellido\": \"Grance\",\n    \"numeroDocumento\": 4443908,\n    \"tipoDocumento\": \"CI\",\n    \"nacionalidad\": \"Paraguaya\",\n    \"email\": \"majogrance@gmail.com\",\n    \"telefono\": \"0982 356 261\",\n    \"fechaNacimiento\": \"1997-12-13\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"clientes"
+							]
+						},
+						"description": "Inserta un cliente en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "listar clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"clientes"
+							]
+						},
+						"description": "Lista los clientes existentes de la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"nombre\": \"Maria1\",\n    \"apellido\": \"Grance\",\n    \"numeroDocumento\": 4443908,\n    \"tipoDocumento\": \"CI\",\n    \"nacionalidad\": \"Paraguaya\",\n    \"email\": \"majogrance@gmail.com\",\n    \"telefono\": \"0982 356 261\",\n    \"fechaNacimiento\": 881895600000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"clientes"
+							]
+						},
+						"description": "Modifica un cliente de la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/clientes?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"clientes"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Elimina un cliente de la base de datos"
+					},
+					"response": []
+				}
+			],
+			"description": "Este módulo contempla la administración de datos del cliente, los cuales serán los que\nacumulen puntos de fidelidad con sus operaciones."
+		},
+		{
+			"name": "concepto puntos",
+			"item": [
+				{
+					"name": "crear concepto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descripcion\": \"Vale de premio\",\n    \"puntosRequeridos\": 50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/conceptos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"conceptos"
+							]
+						},
+						"description": "Inserta un concepto de puntos"
+					},
+					"response": []
+				},
+				{
+					"name": "listar conceptos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/conceptos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"conceptos"
+							]
+						},
+						"description": "Lista los conceptos de puntos existentes en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar concepto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"descripcion\": \"Vale de descuento\",\n    \"puntosRequeridos\": 50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/conceptos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"conceptos"
+							]
+						},
+						"description": "Modifica un concepto de puntos de la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar concepto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/conceptos?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"conceptos"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Elimina un concepto de puntos de la base de datos dado un id"
+					},
+					"response": []
+				}
+			],
+			"description": "Este módulo contempla la administración de los diferentes conceptos que especifican a qué\nfueron destinados los puntos utilizados, con su respectiva cantidad de puntos requerida. Por\nejemplo: vale de premio, vale de descuento, vale de consumición, etc."
+		},
+		{
+			"name": "regla asignacion puntos",
+			"item": [
+				{
+					"name": "crear regla",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"limiteInferior\": 0,\n    \"limiteSuperior\": 100000,\n    \"montoEquivalencia\": 50000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/reglas-asignaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"reglas-asignaciones"
+							]
+						},
+						"description": "Inserta una regla de asignación de puntos en la base de daos"
+					},
+					"response": []
+				},
+				{
+					"name": "listar reglas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/reglas-asignaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"reglas-asignaciones"
+							]
+						},
+						"description": "Lista las reglas de asignación de puntos existentes en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar regla",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"limiteInferior\": 0,\n    \"limiteSuperior\": 100000,\n    \"montoEquivalencia\": 30000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/reglas-asignaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"reglas-asignaciones"
+							]
+						},
+						"description": "Modifica una regla de asignación de puntos existente"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar regla",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/reglas-asignaciones?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"reglas-asignaciones"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Elimina una regla de la base de datos dado un id"
+					},
+					"response": []
+				}
+			],
+			"description": "Este módulo permite definir las reglas que rigen la cantidad de puntos a asignar a un cliente\nen base al rango de valor de consumo:\nEjemplo:\n    o 0 a 199.999 Gs.: 1 punto cada 50.000\n    o 200.000 Gs. a 499.999 Gs. 1 punto cada 30.000\n    o 500.000 Gs. para arriba: 1 punto cada 20.000\nObservación: los rangos serán opcionales, es decir, se puede tener una sola regla que asigne 1\npunto cada X Gs. sin importar en qué rango cae el monto de la operación."
+		},
+		{
+			"name": "vencimiento puntos",
+			"item": [
+				{
+					"name": "crear vencimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fechaInicio\": \"2021-01-01\",\n    \"fechaFin\": \"2021-12-31\",\n    \"diasDuracion\": \"356\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/vencimientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"vencimientos"
+							]
+						},
+						"description": "Inserta un vencimiento de puntos en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "listar vencimientos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/vencimientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"vencimientos"
+							]
+						},
+						"description": "Lista los vencimientos de puntos existentes en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar vencimiento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"fechaInicio\": \"2021-01-01\",\n    \"fechaFin\": \"2021-12-31\",\n    \"diasDuracion\": 365\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/vencimientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"vencimientos"
+							]
+						},
+						"description": "Modifica un vencimiento de puntos existente en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar vencimiento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/vencimientos?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"vencimientos"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Elimina un vencimiento de puntos de la base de datos"
+					},
+					"response": []
+				}
+			],
+			"description": "Este módulo permite definir el tiempo de validez de los puntajes asignados a los clientes. Una\nvez alcanzado el tiempo determinado, los puntos son descontados de la bolsa por\nvencimiento."
+		},
+		{
+			"name": "bolsa puntos",
+			"item": [
+				{
+					"name": "crear bolsa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cliente\": {\n        \"id\": 2,\n        \"nombre\": \"Maria\",\n        \"apellido\": \"Grance\",\n        \"numeroDocumento\": 4443908,\n        \"tipoDocumento\": \"CI\",\n        \"nacionalidad\": \"Paraguaya\",\n        \"email\": \"majogrance@gmail.com\",\n        \"telefono\": \"0982 356 261\",\n        \"fechaNacimiento\": 881895600000\n    },\n    \"fechaAsignacion\": \"2021-03-03\",\n    \"fechaCaducidad\": \"2021-12-31\",\n    \"puntosAsignados\": 50,\n    \"puntosUtilizados\": 40,\n    \"puntosSaldo\": 10,\n    \"montoOperacion\": 30000,\n    \"estado\": \"ACTIVO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/bolsas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"bolsas"
+							]
+						},
+						"description": "Inserta una bolsa de puntos en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "listar bolsas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/bolsas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"bolsas"
+							]
+						},
+						"description": "Modifica una bolsa existente en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar bolsa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "Modifica una bolsa de puntos existente en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar bolsa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/bolsas/?id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"bolsas",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Elimina una bolsa de puntos de la base de datos"
+					},
+					"response": []
+				}
+			],
+			"description": "Bolsa de puntos correspondiente a un cliente"
+		},
+		{
+			"name": "uso puntos",
+			"item": [
+				{
+					"name": "crear uso cabecera",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cliente\": {\n        \"id\": 2,\n        \"nombre\": \"Maria\",\n        \"apellido\": \"Grance\",\n        \"numeroDocumento\": 4443908,\n        \"tipoDocumento\": \"CI\",\n        \"nacionalidad\": \"Paraguaya\",\n        \"email\": \"majogrance@gmail.com\",\n        \"telefono\": \"0982 356 261\",\n        \"fechaNacimiento\": 881895600000\n    },\n    \"puntosUtilizados\": 5,\n    \"fecha\": \"2021-03-28\",\n    \"concepto\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/cabeceras",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"cabeceras"
+							]
+						},
+						"description": "Inserta un uso de puntos en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "listar usos cabecera",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/cabeceras",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"cabeceras"
+							]
+						},
+						"description": "Lista los usos de puntos existentes en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar usos cabecera",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"cliente\": {\n        \"id\": 2,\n        \"nombre\": \"Maria\",\n        \"apellido\": \"Grance\",\n        \"numeroDocumento\": 4443908,\n        \"tipoDocumento\": \"CI\",\n        \"nacionalidad\": \"Paraguaya\",\n        \"email\": \"majogrance@gmail.com\",\n        \"telefono\": \"0982 356 261\",\n        \"fechaNacimiento\": 881895600000\n    },\n    \"puntosUtilizados\": 8,\n    \"fecha\": 1616814000000,\n    \"concepto\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/cabeceras",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"cabeceras"
+							]
+						},
+						"description": "Modifica un uso de puntos existente en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar uso cabecera",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/cabeceras?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"cabeceras"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Elimina un uso de puntos de la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "crear uso detalle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cabecera\": {\n        \"id\": 2,\n        \"cliente\": {\n            \"id\": 2,\n            \"nombre\": \"Maria\",\n            \"apellido\": \"Grance\",\n            \"numeroDocumento\": 4443908,\n            \"tipoDocumento\": \"CI\",\n            \"nacionalidad\": \"Paraguaya\",\n            \"email\": \"majogrance@gmail.com\",\n            \"telefono\": \"0982 356 261\",\n            \"fechaNacimiento\": 881895600000\n        },\n        \"puntosUtilizados\": 5,\n        \"fecha\": 1616814000000,\n        \"concepto\": 2\n    },\n    \"bolsa\": {\n        \"id\": 4,\n        \"cliente\": {\n            \"id\": 2,\n            \"nombre\": \"Maria\",\n            \"apellido\": \"Grance\",\n            \"numeroDocumento\": 4443908,\n            \"tipoDocumento\": \"CI\",\n            \"nacionalidad\": \"Paraguaya\",\n            \"email\": \"majogrance@gmail.com\",\n            \"telefono\": \"0982 356 261\",\n            \"fechaNacimiento\": 881895600000\n        },\n        \"fechaAsignacion\": 1614654000000,\n        \"fechaCaducidad\": 1640833200000,\n        \"puntosAsignados\": 50,\n        \"puntosUtilizados\": 40,\n        \"puntosSaldo\": 10,\n        \"montoOperacion\": 30000,\n        \"estado\": \"ACTIVO\"\n    },\n    \"puntosUtilizados\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/detalles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"detalles"
+							]
+						},
+						"description": "Inserta un uso de puntos en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "listar usos detalle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/detalles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"detalles"
+							]
+						},
+						"description": "Lista los usos de puntos existentes en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar usos detalle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"id\": 1,\n    \"cabecera\": {\n        \"id\": 2,\n        \"cliente\": {\n            \"id\": 2,\n            \"nombre\": \"Maria\",\n            \"apellido\": \"Grance\",\n            \"numeroDocumento\": 4443908,\n            \"tipoDocumento\": \"CI\",\n            \"nacionalidad\": \"Paraguaya\",\n            \"email\": \"majogrance@gmail.com\",\n            \"telefono\": \"0982 356 261\",\n            \"fechaNacimiento\": 881895600000\n        },\n        \"puntosUtilizados\": 5,\n        \"fecha\": 1616814000000,\n        \"concepto\": 2\n    },\n    \"bolsa\": {\n        \"id\": 4,\n        \"cliente\": {\n            \"id\": 2,\n            \"nombre\": \"Maria\",\n            \"apellido\": \"Grance\",\n            \"numeroDocumento\": 4443908,\n            \"tipoDocumento\": \"CI\",\n            \"nacionalidad\": \"Paraguaya\",\n            \"email\": \"majogrance@gmail.com\",\n            \"telefono\": \"0982 356 261\",\n            \"fechaNacimiento\": 881895600000\n        },\n        \"fechaAsignacion\": 1614654000000,\n        \"fechaCaducidad\": 1640833200000,\n        \"puntosAsignados\": 50,\n        \"puntosUtilizados\": 40,\n        \"puntosSaldo\": 10,\n        \"montoOperacion\": 30000,\n        \"estado\": \"ACTIVO\"\n    },\n    \"puntosUtilizados\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/detalles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"detalles"
+							]
+						},
+						"description": "Modifica un uso de puntos existente en la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar usos detalle",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/detalles?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"detalles"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Elimina un uso de puntos de la base de datos"
+					},
+					"response": []
+				}
+			],
+			"description": "Debe utilizarse en un esquema FIFO (primero se utilizan las bolsas más antiguas). Tiene un\ndetalle debido a que para satisfacer una petición de puntos se puede utilizar más de una bolsa."
+		},
+		{
+			"name": "consultas",
+			"item": [
+				{
+					"name": "uso de puntos por concepto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/cabeceras/byConcepto?id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"cabeceras",
+								"byConcepto"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Reporte de uso de puntos por conceptos de uso"
+					},
+					"response": []
+				},
+				{
+					"name": "uso de puntos por fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/cabeceras/byFecha?fechaInicio=2021-03-20&fechaFin=2021-03-30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"cabeceras",
+								"byFecha"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2021-03-20"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2021-03-30"
+								}
+							]
+						},
+						"description": "Reporte de uso de puntos por fecha"
+					},
+					"response": []
+				},
+				{
+					"name": "uso de puntos por cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/cabeceras/byCliente?id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"cabeceras",
+								"byCliente"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Reporte de uso de puntos por cliente"
+					},
+					"response": []
+				},
+				{
+					"name": "bolsa de puntos por cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/bolsas/byCliente?id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"bolsas",
+								"byCliente"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Reporte de bolsa de puntos por cliente"
+					},
+					"response": []
+				},
+				{
+					"name": "bolsa de puntos por rango de puntos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/bolsas/byRango?valorInicio=0&valorFin=100000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"bolsas",
+								"byRango"
+							],
+							"query": [
+								{
+									"key": "valorInicio",
+									"value": "0"
+								},
+								{
+									"key": "valorFin",
+									"value": "100000"
+								}
+							]
+						},
+						"description": "Reporte de bolsa de puntos por rango de fechas"
+					},
+					"response": []
+				},
+				{
+					"name": "clientes con puntos a vencer en x días",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/bolsas/vencidos/clientes?dias=300",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"bolsas",
+								"vencidos",
+								"clientes"
+							],
+							"query": [
+								{
+									"key": "dias",
+									"value": "300"
+								}
+							]
+						},
+						"description": "clientes con puntos a vencer en x días"
+					},
+					"response": []
+				},
+				{
+					"name": "clientes por nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/clientes/byNombre?nombre=Mari",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"clientes",
+								"byNombre"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "Mari"
+								}
+							]
+						},
+						"description": "Reporte de clientes por nombre"
+					},
+					"response": []
+				},
+				{
+					"name": "clientes por apellido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/clientes/byApellido?apellido=Gra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"clientes",
+								"byApellido"
+							],
+							"query": [
+								{
+									"key": "apellido",
+									"value": "Gra"
+								}
+							]
+						},
+						"description": "Reporte de clientes por apellido"
+					},
+					"response": []
+				},
+				{
+					"name": "clientes por cumpleaños",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/clientes/byCumple?desdeFecha=1997-12-12&hastaFecha=1997-12-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"clientes",
+								"byCumple"
+							],
+							"query": [
+								{
+									"key": "desdeFecha",
+									"value": "1997-12-12"
+								},
+								{
+									"key": "hastaFecha",
+									"value": "1997-12-31"
+								}
+							]
+						},
+						"description": "Reporte de clientes por cumpleaños"
+					},
+					"response": []
+				}
+			],
+			"description": "Este módulo contempla la consulta para el desarrollo de reportes.\nLas consultas a proveer son:\n    - Uso de puntos por: concepto de uso, fecha de uso, cliente\n    - Bolsa de puntos por: cliente, rango de puntos\n    - Clientes con puntos a vencer en x días\n    - Consulta de clientes por: nombre (aproximación), apellido (aproximación), cumpleaños",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "servicios",
+			"item": [
+				{
+					"name": "carga de puntos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/bolsas/cargar/2?monto=50000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"bolsas",
+								"cargar",
+								"2"
+							],
+							"query": [
+								{
+									"key": "monto",
+									"value": "50000"
+								}
+							]
+						},
+						"description": "Se recibe el identificador de cliente y el monto de la\noperación, y se asigna los puntos"
+					},
+					"response": []
+				},
+				{
+					"name": "utilizar puntos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/usos/cabeceras/cargar/2?idConcepto=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"usos",
+								"cabeceras",
+								"cargar",
+								"2"
+							],
+							"query": [
+								{
+									"key": "idConcepto",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Se recibe el identificador del cliente y el identificador del concepto de uso y se descuenta dicho puntaje al cliente registrando el uso de puntos"
+					},
+					"response": []
+				},
+				{
+					"name": "equivalencia de puntos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/puntos/reglas-asignaciones/get-puntos/100000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"puntos",
+								"reglas-asignaciones",
+								"get-puntos",
+								"100000"
+							]
+						},
+						"description": "Es un servicio informativo que devuelve la cantidad de puntos equivalente al monto proporcionado como parámetro"
+					},
+					"response": []
+				}
+			],
+			"description": "- Carga de puntos (POST):​ se recibe el identificador de cliente y el monto de la\noperación, y se asigna los puntos (genera datos con la estructura del punto 5)\n- Utilizar puntos (POST):​ se recibe el identificador del cliente y el identificador del\nconcepto de uso y se descuenta dicho puntaje al cliente registrando el uso de puntos\n(genera datos con la estructura del punto 6 y actualiza la del punto 5)\no además debe enviar un correo electrónico al cliente como comprobante\n- Consultar cuantos puntos equivale a un monto X (GET):​ es un servicio\ninformativo que devuelve la cantidad de puntos equivalente al monto proporcionado\ncomo parámetro utilizando la configuración del punto 3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		}
+	]
+}

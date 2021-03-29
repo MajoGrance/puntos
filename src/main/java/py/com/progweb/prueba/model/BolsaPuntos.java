@@ -64,11 +64,11 @@ public class BolsaPuntos {
 
     @Column(name = "puntos_utilizados")
     @Basic(optional = false)
-    private Integer puntosAsignados;
+    private Integer puntosUtilizados;
 
     @Column(name = "puntos_asignados")
     @Basic(optional = false)
-    private Integer puntosUtilizados;
+    private Integer puntosAsignados;
 
     @Column(name = "puntos_saldo")
     @Basic(optional = false)

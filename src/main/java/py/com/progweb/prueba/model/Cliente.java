@@ -27,7 +27,7 @@ import javax.persistence.Temporal;
             query = "SELECT c FROM Cliente c WHERE c.apellido LIKE :nombreApellido"),
     @NamedQuery(
             name = "Cliente.byCumple",
-            query = "SELECT c FROM Cliente c ")
+            query = "SELECT c FROM Cliente c WHERE c.fechaNacimiento BETWEEN :desdeFecha AND :hastaFecha"),
 })  
 public class Cliente {
 

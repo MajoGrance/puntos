@@ -76,10 +76,9 @@ public class BolsaPuntosRest {
     
     @POST
     @Path("/cargar/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response cargaPuntos(@PathParam("id") Integer idCliente, @QueryParam("monto") Double monto){
-        this.bolsaPuntosBean.cargarPuntos(idCliente, monto);
+		this.bolsaPuntosBean.cargarPuntos(idCliente, monto);
         return Response.ok().build();
     }
     

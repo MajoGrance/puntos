@@ -44,7 +44,6 @@ public class ClienteRest {
     }
 
     @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response borrar(@QueryParam("id") Integer idCliente) {
         clienteBean.eliminar(idCliente);
@@ -68,8 +67,8 @@ public class ClienteRest {
     @GET
     @Path("/byCumple")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarByCumple(@QueryParam("cumple") String cumple) throws ParseException {
-        return Response.ok(clienteBean.listarByCumple(cumple)).build();
+    public Response listarByCumple(@QueryParam("desdeFecha") String desdeFecha, @QueryParam("hastaFecha") String hastaFecha) throws ParseException {
+        return Response.ok(clienteBean.listarByCumple(desdeFecha, hastaFecha)).build();
     }
 
 }
