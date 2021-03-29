@@ -1,6 +1,5 @@
 package py.com.progweb.prueba.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -76,7 +75,7 @@ public class BolsaPuntos {
 
     @Column(name = "monto_operacion")
     @Basic(optional = false)
-    private BigDecimal montoOperacion;
+    private Double montoOperacion;
     
     @Column(name="estado", columnDefinition = "VARCHAR DEFAULT 'ACTIVO'")
     @Basic(optional = false)
@@ -138,7 +137,7 @@ public class BolsaPuntos {
         this.puntosUtilizados = puntosUtilizados;
     }
 
-    public BigDecimal getMontoOperacion() {
+    public Double getMontoOperacion() {
         return montoOperacion;
     }
 
@@ -150,7 +149,7 @@ public class BolsaPuntos {
         this.puntosSaldo = puntosSaldo;
     }
 
-    public void setMontoOperacion(BigDecimal montoOperacion) {
+    public void setMontoOperacion(Double montoOperacion) {
         this.montoOperacion = montoOperacion;
     }
 

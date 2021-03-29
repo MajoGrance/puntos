@@ -1,6 +1,5 @@
 package py.com.progweb.prueba.ejb;
 
-import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -121,7 +120,7 @@ public class BolsaPuntosDAO {
 
         bolsa.setFechaAsignacion(actual);
         bolsa.setFechaCaducidad(calendar.getTime());
-        bolsa.setMontoOperacion(BigDecimal.ZERO);
+        bolsa.setMontoOperacion(monto);
         bolsa.setEstado("ACTIVO");
 		this.em.persist(bolsa);
     }
